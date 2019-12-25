@@ -17,7 +17,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	case "GET":
 		response, err := getCustomServices()
 		if err == nil {
-			httpod.Response(w, response)
+			httpod.StatusOK(w, response)
 		}
 	}
 }
