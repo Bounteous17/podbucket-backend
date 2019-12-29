@@ -4,6 +4,11 @@ import (
 	"net/http"
 )
 
+const (
+	database   = "podbucket"
+	collection = "users"
+)
+
 type User struct {
 	isAdmin       bool
 	isCreator     bool

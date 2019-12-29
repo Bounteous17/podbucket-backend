@@ -8,6 +8,7 @@ type PodError struct {
 
 const (
 	INVALID_BODY = "Body is not JSON valid format"
+	DECODE_FAIL  = "Error decoding response"
 )
 
 func NewError(error *PodError) ([]byte, error) {
