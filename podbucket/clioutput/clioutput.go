@@ -18,3 +18,8 @@ func Success(message string) {
 func Error(message string) {
 	color.Error.Tips(message)
 }
+
+// Fatal panic
+func Fatal(error error) {
+	color.Danger.Println(error.Error())
+}
