@@ -1,0 +1,45 @@
+{
+	"info": {
+		"_postman_id": "b24e7421-ed18-4a1e-b42f-0fefd3f7dd3a",
+		"name": "podbucket",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create user",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"isAdmin\": true,\n\t\"isContributor\": false,\n\t\"disabled\": false,\n\t\"expire\": \"no\",\n\t\"nick\": \"bounteous\",\n\t\"email\": \"bounteous@git.com\",\n\t\"name\": \"Bounteus\",\n\t\"surname\": \"Git\",\n\t\"password\": \"123\",\n\t\"age\": 0\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:1337/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1337",
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
