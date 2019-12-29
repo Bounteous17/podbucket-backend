@@ -12,15 +12,17 @@ import (
 
 const (
 	Host             = "localhost"
-	Db               = "podbucket"
 	Port             = 27017
 	SelectionTimeout = 8
 )
 
 var instance *mongo.Client
+var dbDomain string
 
 func connect() *mongo.Client {
-	dbURI := strings.Join([]string{"mongodb://", Host, ":", strconv.Itoa(Port), "/?serverSelectionTimeoutMS=", strconv.Itoa(SelectionTimeout * 1000)}, "")
+	dbDomain = strings.Join([]string{"mongodb://", Host, ":", strconv.Itoa(Port)}, "")
+	// TODO use GO milisecons type
+	dbURI := strings.Join([]string{dbDomain, "/?serverSelectionTimeoutMS=", strconv.Itoa(SelectionTimeout * 1000)}, "")
 	clioutput.Info("Trying to connect to " + dbURI)
 
 	// Set client options
@@ -40,7 +42,7 @@ func connect() *mongo.Client {
 		clioutput.Fatal(err)
 	}
 
-	clioutput.Success("Connected to \"" + Db + "\" database")
+	clioutput.Success("Connected to \"" + dbDomain + "\"")
 
 	return client
 }
@@ -50,7 +52,7 @@ func Client() *mongo.Client {
 	if instance == nil {
 		instance = connect()
 	} else {
-		clioutput.Info("Reusing database \"" + Db + "\" connection instance")
+		clioutput.Info("Reusing connection instance with " + dbDomain)
 	}
 	return instance
 }
