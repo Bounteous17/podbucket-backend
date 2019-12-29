@@ -11,6 +11,7 @@ import (
 	"github.com/bounteous/podbucket-backend/custom/mycustomservice"
 	"github.com/bounteous/podbucket-backend/podbucket/app"
 	"github.com/bounteous/podbucket-backend/podbucket/clioutput"
+	"github.com/bounteous/podbucket-backend/podbucket/user"
 )
 
 const (
@@ -22,6 +23,7 @@ func main() {
 	clioutput.Info(strings.Join([]string{"Server listening on port ", strconv.Itoa(Port)}, ""))
 	muxRouter := mux.NewRouter()
 	muxRouter.HandleFunc("/", app.Handler)
+	muxRouter.HandleFunc("/user", user.Handler)
 	muxRouter.HandleFunc("/mycustomservices", mycustomservice.Handler)
 	log.Fatal(http.ListenAndServe(strings.Join([]string{":", strconv.Itoa(Port)}, ""), muxRouter))
 }
